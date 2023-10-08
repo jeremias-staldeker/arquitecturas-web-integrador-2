@@ -10,6 +10,10 @@ import model.EstudianteCarrera;
 
 public class EstudianteCarreraRepositoryImpl implements EstudianteCarreraRepository {
 
+	/**
+	 * 
+	 * @param estudianteCarreraEntity
+	 */
 	private void matricularEstudiante(EstudianteCarreraEntity estudianteCarreraEntity) {
 		EntityManager em = EntityFactory.createEntityManager();
 		EntityTransaction transaction = em.getTransaction();

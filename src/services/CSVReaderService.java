@@ -2,7 +2,10 @@ package services;
 
 import java.io.IOException;
 import java.util.List;
-import model.*;
+
+import model.Carrera;
+import model.Estudiante;
+import model.EstudianteCarrera;
 
 public interface CSVReaderService {
 	/**

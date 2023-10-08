@@ -37,20 +37,23 @@ public class main {
 					.readEstudianteCarreraFromCSV(estudianteCarreraCSVPath);
 
 			// Guardar los datos en la base de datos
-			System.out.println("Inicio de carga de datos.");
-			for (Carrera carrera : carreras) {
-				carreraRep.agregarCarrera(carrera);
-			}
-			
-			for (Estudiante estudiante : estudiantes) {
-				estudianteRep.agregarEstudiante(estudiante);
-			}
-			
-			for (EstudianteCarrera estCarrera : estudianteCarrera) {
-				estCarreraRep.matricularEstudiante(estCarrera);
-			}
-			
-			System.out.println("Datos cargados en la base de datos correctamente.");
+//			System.out.println("Inicio de carga de datos.");
+//			for (Carrera carrera : carreras) {
+//				carreraRep.agregarCarrera(carrera);
+//			}
+//
+//			for (Estudiante estudiante : estudiantes) {
+//				estudianteRep.agregarEstudiante(estudiante);
+//			}
+//
+//			for (EstudianteCarrera estCarrera : estudianteCarrera) {
+//				estCarreraRep.matricularEstudiante(estCarrera);
+//			}
+//			System.out.println("Datos cargados en la base de datos correctamente.");
+
+			System.out.println("");
+			System.out.println("------------------------------");
+			System.out.println("");
 
 			// c) recuperar todos los estudiantes, y especificar algún criterio de
 			// ordenamiento simple.
@@ -63,7 +66,7 @@ public class main {
 			System.out.println("");
 			System.out.println("------------------------------");
 			System.out.println("");
-			
+
 			// d) recuperar un estudiante, en base a su número de libreta universitaria.
 			Estudiante estudiantePorLibreta = estudianteRep.getEstudianteByLibreta(51244);
 			System.out.println("Estudiante Por Libreta:");

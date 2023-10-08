@@ -15,6 +15,10 @@ import model.Estudiante;
 
 public class EstudianteRepositoryImpl implements EstudianteRepository {
 
+	/**
+	 * 
+	 * @param estudiante
+	 */
 	private void agregarEstudiante(EstudianteEntity estudiante) {
 		EntityManager em = EntityFactory.createEntityManager();
 		EntityTransaction transaction = em.getTransaction();
@@ -38,13 +42,13 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	}
 
 	@Override
-	public List<EstudianteEntity> getEstudiantes() {
+	public List<Estudiante> getEstudiantes() {
 		EntityManager em = EntityFactory.createEntityManager();
 		try {
-			String jpql = "";
-			Query query = em.createQuery(jpql);
+			String jpql = "SELECT e FROM EstudianteEntity e";
+			TypedQuery<EstudianteEntity> query = em.createQuery(jpql, EstudianteEntity.class);
 			List<EstudianteEntity> estudiantes = query.getResultList();
-			return estudiantes;
+			return EstudianteMapper.entityListToModelList(estudiantes);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -70,14 +74,14 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	}
 
 	@Override
-	public EstudianteEntity getEstudiante(int id) {
+	public Estudiante getEstudiante(int id) {
 		EntityManager em = EntityFactory.createEntityManager();
 		try {
-			String jpql = "";
-			Query query = em.createQuery(jpql, EstudianteEntity.class);
+			String jpql = "SELECT e FROM EstudianteEntity e WHERE e.dni = :id";
+			TypedQuery<EstudianteEntity> query = em.createQuery(jpql, EstudianteEntity.class);
 			query.setParameter("id", id);
-			EstudianteEntity estudiante = (EstudianteEntity) query.getSingleResult();
-			return estudiante;
+			EstudianteEntity estudiante = query.getSingleResult();
+			return EstudianteMapper.entityToModel(estudiante);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

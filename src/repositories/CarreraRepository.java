@@ -2,7 +2,6 @@ package repositories;
 
 import java.util.List;
 
-import dao.entities.CarreraEntity;
 import model.Carrera;
 import model.RepuestaCarreraInscriptos;
 import model.RespuestaReporteCarrera;
@@ -17,12 +16,6 @@ public interface CarreraRepository {
 
 	/**
 	 * 
-	 * @param carrera
-	 */
-	public void eliminarCarrera(CarreraEntity carrera);
-
-	/**
-	 * 
 	 * @return
 	 */
 	public List<Carrera> getCarreras();
@@ -33,11 +26,6 @@ public interface CarreraRepository {
 	 * @return
 	 */
 	public Carrera getCarrera(int id);
-
-	/**
-	 * 
-	 */
-	public void obtenerPorCantInscriptos();
 
 	/**
 	 * 

@@ -2,9 +2,7 @@ package dao.entities.mapper;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import dao.entities.CarreraEntity;
 import model.Carrera;
@@ -84,8 +82,12 @@ public class CarreraMapper {
 		return respuestaInscriptos;
 	}
 
+	/**
+	 * 
+	 * @param carreraReporte
+	 * @return
+	 */
 	public static List<RespuestaReporteCarrera> entityToModelRespuestaReporte(List<Object[]> carreraReporte) {
-		Map<String, RespuestaReporteCarrera> carreraMap = new HashMap<>();
 		List<RespuestaReporteCarrera> resultadoFinal = new ArrayList<>();
 
 		for (Object[] resultado : carreraReporte) {
@@ -95,30 +97,31 @@ public class CarreraMapper {
 			BigDecimal inscriptos = (BigDecimal) resultado[3];
 			BigDecimal egresados = (BigDecimal) resultado[4];
 
-			if (!carreraMap.containsKey(nombreCarrera)) {
-				RespuestaReporteCarrera respuestaCarrera = new RespuestaReporteCarrera();
-				ReporteCarrera reporteCarrera = new ReporteCarrera();
+			RespuestaReporteCarrera respuestaCarrera = null;
+
+			for (RespuestaReporteCarrera carrera : resultadoFinal) {
+				if (carrera.getCarrera().getNombre().equals(nombreCarrera)) {
+					respuestaCarrera = carrera;
+					break;
+				}
+			}
+
+			if (respuestaCarrera == null) {
+				respuestaCarrera = new RespuestaReporteCarrera();
 				Carrera carrera = new Carrera();
 				carrera.setId(id);
 				carrera.setNombre(nombreCarrera);
 				respuestaCarrera.setCarrera(carrera);
-				reporteCarrera.setAnio(anio);
-				reporteCarrera.setInscriptos(inscriptos.intValue());
-				reporteCarrera.setEgresados(egresados.intValue());
-				respuestaCarrera.getReporteCarrera().add(reporteCarrera);
-
-				carreraMap.put(nombreCarrera, respuestaCarrera);
-			} else {
-				RespuestaReporteCarrera carrera = carreraMap.get(nombreCarrera);
-				ReporteCarrera reporteCarrera = new ReporteCarrera();
-				reporteCarrera.setAnio(anio);
-				reporteCarrera.setInscriptos(inscriptos.intValue());
-				reporteCarrera.setEgresados(egresados.intValue());
-
-				carrera.getReporteCarrera().add(reporteCarrera);
+				resultadoFinal.add(respuestaCarrera);
 			}
+
+			ReporteCarrera reporteCarrera = new ReporteCarrera();
+			reporteCarrera.setAnio(anio);
+			reporteCarrera.setInscriptos(inscriptos.intValue());
+			reporteCarrera.setEgresados(egresados.intValue());
+			respuestaCarrera.getReporteCarrera().add(reporteCarrera);
 		}
-		resultadoFinal.addAll(carreraMap.values());
+
 		return resultadoFinal;
 	}
 }

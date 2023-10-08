@@ -2,7 +2,6 @@ package repositories;
 
 import java.util.List;
 
-import dao.entities.EstudianteEntity;
 import model.Estudiante;
 
 public interface EstudianteRepository {
@@ -17,7 +16,7 @@ public interface EstudianteRepository {
 	 * 
 	 * @return
 	 */
-	public List<EstudianteEntity> getEstudiantes();
+	public List<Estudiante> getEstudiantes();
 
 	/**
 	 * 
@@ -30,7 +29,7 @@ public interface EstudianteRepository {
 	 * @param id
 	 * @return
 	 */
-	public EstudianteEntity getEstudiante(int id);
+	public Estudiante getEstudiante(int id);
 
 	/**
 	 * 

@@ -16,6 +16,10 @@ import model.RespuestaReporteCarrera;
 
 public class CarreraRepositoryImpl implements CarreraRepository {
 
+	/**
+	 * 
+	 * @param carrera
+	 */
 	private void agregarCarrera(CarreraEntity carrera) {
 		EntityManager em = EntityFactory.createEntityManager();
 		EntityTransaction transaction = em.getTransaction();
@@ -37,33 +41,6 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 	@Override
 	public void agregarCarrera(Carrera carrera) {
 		agregarCarrera(CarreraMapper.modelToEntity(carrera));
-	}
-
-	@Override
-	public void eliminarCarrera(CarreraEntity carrera) {
-//		EntityManager em = EntityFactory.createEntityManager();
-//		EntityTransaction transaction = em.getTransaction();
-//		transaction.begin();
-//		try {
-//			String jpql = "";
-//			TypedQuery<Carrera> query = em.createQuery(jpql);
-//			query.setParameter("id", carrera.getId());
-//			int result = query.executeUpdate();
-//			if (result > 0) {
-//				System.out.println("Carrera " + carrera.getNombre() + " eliminada con exito");
-//			} else {
-//				System.out.println("No se encontro la carrera " + carrera.getNombre());
-//			}
-//			transaction.commit();
-//		} catch (Exception e) {
-//			if (transaction != null && transaction.isActive()) {
-//				transaction.rollback();
-//			}
-//			e.printStackTrace();
-//		} finally {
-//			em.close();
-//		}
-
 	}
 
 	@Override
@@ -102,6 +79,7 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<RespuestaReporteCarrera> getReporteCarreras() {
 		EntityManager em = EntityFactory.createEntityManager();
 		try {
@@ -130,24 +108,6 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 		} finally {
 			em.close();
 		}
-	}
-
-	@Override
-	public void obtenerPorCantInscriptos() {
-//		EntityManager em = EntityFactory.createEntityManager();
-//		try {
-//			String jpql = "";
-//			Query query = em.createQuery(jpql,CarreraDto.class);
-//			query.setParameter("id", id);
-//			CarreraDto carrera = (CarreraDto) query.getSingleResult();
-//			
-//			return carrera;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		} finally {
-//			em.close();
-//		}
 	}
 
 	@Override

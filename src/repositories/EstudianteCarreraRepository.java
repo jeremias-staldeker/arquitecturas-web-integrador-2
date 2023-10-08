@@ -5,12 +5,8 @@ import model.EstudianteCarrera;
 public interface EstudianteCarreraRepository {
 
 	/**
-	 * 	
-	 * @param estudiante
-	 * @param carrera
-	 * @param anioInscripcion
-	 * @param graduacion
-	 * @param antiguedad
+	 * 
+	 * @param estudianteCarrera
 	 */
 	public void matricularEstudiante(EstudianteCarrera estudianteCarrera);
 
