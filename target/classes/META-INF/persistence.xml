@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
+	<persistence-unit name="IntegradorParteDos">		
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		
+		<class>dao.entities.CarreraEntity</class>
+		<class>dao.entities.EstudianteEntity</class>
+		<class>dao.entities.InscripcionEntity</class>
+		
+		<properties>
+			<!-- Propiedades de configuración de JDBC para MySQL -->
+ 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> 
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://app.facu-sanchez.com:3306/u619253451_tudai"/> 
+			<property name="javax.persistence.jdbc.user" value="u619253451_tudai" /> 
+ 			<property name="javax.persistence.jdbc.password" value="Tudai2023"/> 
+			
+			<!-- Propiedad para la generación automática del esquema de base de datos -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<!-- Propiedad para especificar el dialecto de MySQL -->
+	 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            
+            <!-- Propiedad para mostrar las consultas SQL en la consola (para debugging) -->
+            <property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+</persistence>
